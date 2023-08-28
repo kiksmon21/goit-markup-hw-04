@@ -1,9 +1,9 @@
 *,
 *::after,
 *::before {
-box-sizing: inherit;
+/* box-sizing: border-box; */
 margin: 0;
-padding: 0;
+/* padding: 0; */
 }
 
 :root {
@@ -72,7 +72,10 @@ body {
 }
 
 .container {
-    width: 1158px;
+    width: 1200px;
+    padding: 0 15px 0 15px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .section {
@@ -97,36 +100,33 @@ body {
     padding: 24px 0px 24px 0px;
 }
 
-.logo {
+.link-logo {
+    text-decoration: none;
     font-family: Raleway;
     font-size: 18px;
     font-weight: 800;
     line-height: 1.167;
     letter-spacing: 0.54px;
     text-transform: uppercase;
+    margin-right: 76px;
+    color: var(--slate, #434455);
 }
 
 .logo-span {
     color: var(--iris, #4D5AE5);
 }
 
-.link.logo {
-    margin-right: 76px;
-}
-
-.list {
-    display: flex;
-    flex-flow: row;
-    column-gap: 40px;
-    list-style: none;
-    letter-spacing: 0.32px;
-    /*padding-top: 72px;*/
-
-}
-
 .nav-list {
+    display: flex;
+}
+
+.nav-list-item {
     font-weight: 500;
     color: var(--navyblue, #2E2F42);
+}
+
+.nav-list-item:not(:last-child) {
+    margin-right: 40px;
 }
 
 .address {
@@ -139,29 +139,32 @@ body {
 }
 
 .section {
-    display: flex;
+    padding: 120px 0 120px 0;
 }
 
-.section.banner {
+.section.hero {
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background: linear-gradient(rgba(46, 47, 66, 0.70), rgba(46, 47, 66, 0.70)), url('./../images/people-office-1.jpg');
-    background-size: 1440px auto;
-    background-position: 50% 50%;
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     text-align: center;
     row-gap: 48px;
+    padding: 188px 0 188px 0;
+    margin: 0 auto;
 }
 
 .catch-phrase {
     font-size: 56px;
     font-weight: 700;
-    line-height: 0.933;
+    line-height: 60px;
     letter-spacing: 1.12px;
     color: #FFFFFF;
     display: inline-block;
     width: 496px;
+    margin: 0 0 48px 0;
 }
 
 #order-service-btn {
@@ -187,31 +190,30 @@ body {
     color: var(--ocean, #404BBF);
 }
 
-.section.about {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    row-gap: 72px;
+.section.wedo {
+    padding-top: 0;
 }
 
-.list.container {
+.list.features {
     display: flex;
-    flex-flow: row;
-    justify-content: space-between;
-    column-gap: 24px;
+    flex-wrap: wrap;
+    gap: 30px;
 }
 
-.about-icon-container {
+.features-list-item {
+    flex-basis: calc((100% - 90px) / 4);
+}
+
+.features-icon-container {
     display: flex;
     justify-content: center;
-    width: 264px;
     height: 112px;
     border-radius: 4px;
     background: var(--cloud, #F4F4FD);
     margin-bottom: 8px;
 }
 
-.about-icon {
+.features-icon {
     display: flex;
     align-self: center;
 }
@@ -230,7 +232,6 @@ body {
     font-size: 16px;
     line-height: 1.5;
     letter-spacing: 0.32px;
-    width: 264px;
     text-align: left;
 }
 
@@ -241,17 +242,32 @@ body {
     line-height: 0.9;
     letter-spacing: 0.72px;
     text-transform: capitalize;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.list.wedo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.wedo-list-item {
+    flex-basis: calc((100% - 60px) / 3);
 }
 
 .section.team {
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    row-gap: 72px;
     background-color: var(--cloud, #F4F4FD);
 }
 
-.profile-list {
+.list.team {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.team-list-item {
+    flex-basis: calc((100% - 90px) / 4);
     display: inline-block;
     padding: 0;
     flex-direction: column;
@@ -262,7 +278,7 @@ body {
     box-shadow: 0px 2px 1px 0px rgba(46, 47, 66, 0.08), 0px 1px 1px 0px rgba(46, 47, 66, 0.16), 0px 1px 6px 0px rgba(46, 47, 66, 0.08);
 }
 
-.profile-list:hover {
+.team-list-item:hover {
     box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.12), 0px 3px 2px 0px rgba(0, 0, 0, 0.08), 0px 4px 2px 0px rgba(0, 0, 0, 0.10);
 }
 
@@ -287,10 +303,12 @@ body {
 }
 
 .team-social-icon {
-    padding: 8px;
+    padding: 10px;
     background: var(--iris, #4D5AE5);
     border-radius: 50%;
     cursor: pointer;
+    width: 35px;
+    height: 35px;
 }
 
 .team-social-icon:hover {
@@ -298,15 +316,17 @@ body {
 }
 
 .section.customers {
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    row-gap: 72px;
     background-color: var(--white, #FFF);
 }
 
+.list.customers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
 .list-item-customer {
-    width: 168px;
+    flex-basis: calc((100% - 150px) / 6);
     height: 88px;
     border-radius: 4px;
     border: 1px solid var(--light-slate, #8E8F99);
@@ -332,16 +352,14 @@ body {
     flex-direction: row;
     justify-content: center;
     background-color: var(--navyblue, #2E2F42);
-    height: 312px;
+    padding: 120px 0 120px 0;
 }
 
-.container.foot {
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    row-gap: 17.5px;
-    width: 264px;
+.footer-item {
+    display: inline-block;
+}
+
+.footer-item:nth-child(1) {
     margin-right: 120px;
 }
 
@@ -382,6 +400,8 @@ body {
     background: var(--iris, #4D5AE5);
     border-radius: 50%;
     cursor: pointer;
+    width: 40px;
+    height: 40px;
 }
 
 .footer-social-icon:hover {
@@ -402,6 +422,13 @@ body {
     display: none;
 }
 
+.list.filter {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
 .portfolio .button {
     display: inline-block;
     padding: 12px 24px;
@@ -412,6 +439,7 @@ body {
     background: var(--cloud, #F4F4FD);
     color: var(--iris, #4D5AE5);
     text-align: center;
+    margin-bottom: 72px;
     /* Button Text */
     font-size: 16px;
     font-weight: 500;
@@ -429,15 +457,14 @@ body {
     color: var(--cloud, #F4F4FD);
 }
 
-.project-ulist {
+.project-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    column-gap: 24px;
-    row-gap: 48px;
+    gap: 30px;
 }
 
-.project-list {
+.project-list-item {
+    flex-basis: calc((100% - 60px) / 3);
     display: inline;
     width: 360px;
     height: 420px;
@@ -446,7 +473,11 @@ body {
     background: var(--white, #FFF);
 }
 
-.project-list-div {
+.project-list-item:hover {
+    box-shadow: 0px 2px 1px 0px rgba(46, 47, 66, 0.08), 0px 1px 1px 0px rgba(46, 47, 66, 0.16), 0px 1px 6px 0px rgba(46, 47, 66, 0.08);
+}
+
+.project-list-item-div {
     padding: 32px 0px 35px 16px;
 }
 
